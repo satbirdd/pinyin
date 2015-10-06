@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class TestPapersControllerTest < ActionController::TestCase
+class PapersControllerTest < ActionController::TestCase
   setup do
-    @test_paper = test_papers(:one)
+    @paper = papers(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:test_papers)
+    assert_not_nil assigns(:papers)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class TestPapersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create test_paper" do
-    assert_difference('TestPaper.count') do
-      post :create, test_paper: { name: @test_paper.name, order: @test_paper.order }
+  test "should create paper" do
+    assert_difference('Paper.count') do
+      post :create, paper: { name: @paper.name, order: @paper.order }
     end
 
-    assert_redirected_to test_paper_path(assigns(:test_paper))
+    assert_redirected_to paper_path(assigns(:paper))
   end
 
-  test "should show test_paper" do
-    get :show, id: @test_paper
+  test "should show paper" do
+    get :show, id: @paper
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @test_paper
+    get :edit, id: @paper
     assert_response :success
   end
 
-  test "should update test_paper" do
-    patch :update, id: @test_paper, test_paper: { name: @test_paper.name, order: @test_paper.order }
-    assert_redirected_to test_paper_path(assigns(:test_paper))
+  test "should update paper" do
+    patch :update, id: @paper, paper: { name: @paper.name, order: @paper.order }
+    assert_redirected_to paper_path(assigns(:paper))
   end
 
-  test "should destroy test_paper" do
-    assert_difference('TestPaper.count', -1) do
-      delete :destroy, id: @test_paper
+  test "should destroy paper" do
+    assert_difference('Paper.count', -1) do
+      delete :destroy, id: @paper
     end
 
-    assert_redirected_to test_papers_path
+    assert_redirected_to papers_path
   end
 end

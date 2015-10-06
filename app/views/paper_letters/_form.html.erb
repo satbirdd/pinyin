@@ -1,0 +1,25 @@
+<%= form_for(@paper_letter) do |f| %>
+  <% if @paper_letter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paper_letter.errors.count, "error") %> prohibited this paper_letter from being saved:</h2>
+
+      <ul>
+      <% @paper_letter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :letter %><br>
+    <%= f.text_field :letter %>
+  </div>
+  <div class="field">
+    <%= f.label :paper_id %><br>
+    <%= f.text_field :paper_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

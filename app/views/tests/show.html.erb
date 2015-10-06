@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Time:</strong>
-  <%= @test.time %>
+  <strong>Name:</strong>
+  <%= @test.paper.name %>
 </p>
 
-<p>
-  <strong>Letter:</strong>
-  <%= @test.letter %>
-</p>
+<div class='test-area'>
+  <button class='btn btn-primary btn-lg begin-test'>Begin</button>
+</div>
 
-<p>
-  <strong>Get:</strong>
-  <%= @test.get %>
-</p>
+<%= link_to 'Back', paper_path(@paper) %>
 
-<%= link_to 'Edit', edit_test_path(@test) %> |
-<%= link_to 'Back', tests_path %>
+<script type="text/javascript">
+  var test = new Test({
+    letters: <%= @letters.to_json.html_safe %>,
+    urlRoot: "<%= paper_test_path(@paper, @test) %>",
+    triggerButton: $('button.begin-test'),
+    element: $('div.test-area')
+  });
+</script>

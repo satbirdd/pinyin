@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
-  root "test_papers#index"
+  root "papers#index"
 
-  resources :tests
   resources :letters, only: [:index, :show]
-  resources :test_paper_letters, only: [:index, :show]
-  resources :test_papers, only: [:index, :show]
+  resources :paper_letters, only: [:index, :show]
+
+  resources :papers, only: [:index, :show] do
+    resources :tests do
+      member do
+        post :read_correct
+        post :read_wrong
+        post :finish
+      end
+    end
+  end
 
   namespace :admin do
     resources :letters
-    resources :test_papers
+    resources :papers
   end
 end

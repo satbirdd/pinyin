@@ -10,12 +10,12 @@
   </thead>
 
   <tbody>
-    <% @admin_test_papers.each do |test_paper| %>
+    <% @admin_papers.each do |paper| %>
       <tr>
-        <td><%= test_paper.name %></td>
-        <td><%= link_to 'Show', admin_test_paper_path(test_paper) %></td>
-        <td><%= link_to 'Edit', edit_admin_test_paper_path(test_paper) %></td>
-        <td><%= link_to 'Destroy', admin_test_paper_path(test_paper), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= paper.name %></td>
+        <td><%= link_to 'Show', admin_paper_path(paper) %></td>
+        <td><%= link_to 'Edit', edit_admin_paper_path(paper) %></td>
+        <td><%= link_to 'Destroy', admin_paper_path(paper), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Test paper', new_admin_test_paper_path %>
+<%= link_to 'New Test paper', new_admin_paper_path %>

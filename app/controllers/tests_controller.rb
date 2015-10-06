@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  before_action :set_paper
   before_action :set_test, only: [:show, :edit, :update, :destroy]
 
   # GET /tests
@@ -10,25 +11,18 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
-  end
-
-  # GET /tests/new
-  def new
-    @test = Test.new
-  end
-
-  # GET /tests/1/edit
-  def edit
+    @letters = @test.letters
+    @test.update(started: true)
   end
 
   # POST /tests
   # POST /tests.json
   def create
-    @test = Test.new(test_params)
+    @test = @paper.tests.build
 
     respond_to do |format|
       if @test.save
-        format.html { redirect_to @test, notice: 'Test was successfully created.' }
+        format.html { redirect_to paper_test_path(@paper, @test), notice: 'Test was successfully created.' }
         format.json { render :show, status: :created, location: @test }
       else
         format.html { render :new }
@@ -61,14 +55,27 @@ class TestsController < ApplicationController
     end
   end
 
+  def read_correct
+    
+  end
+
+  def read_wrong
+  end
+
+  def finish
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
       @test = Test.find(params[:id])
+
+      if @test.started
+        raise ActiveRecord::RecordNotFound
+      end
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def test_params
-      params.require(:test).permit(:time, :letter_id, :get)
+    def set_paper
+      @paper = Paper.find(params[:paper_id])
     end
 end

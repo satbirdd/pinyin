@@ -1,0 +1,2 @@
+module PaperLettersHelper
+end

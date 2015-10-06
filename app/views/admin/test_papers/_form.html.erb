@@ -1,10 +1,10 @@
-<%= form_for([:admin, @admin_test_paper]) do |f| %>
-  <% if @admin_test_paper.errors.any? %>
+<%= form_for([:admin, @admin_paper]) do |f| %>
+  <% if @admin_paper.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@admin_test_paper.errors.count, "error") %> prohibited this admin_test_paper from being saved:</h2>
+      <h2><%= pluralize(@admin_paper.errors.count, "error") %> prohibited this admin_paper from being saved:</h2>
 
       <ul>
-      <% @admin_test_paper.errors.full_messages.each do |message| %>
+      <% @admin_paper.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

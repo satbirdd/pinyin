@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Test Paper Letters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Letter</th>
+      <th>Test paper</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @paper_letters.each do |paper_letter| %>
+      <tr>
+        <td><%= paper_letter.letter %></td>
+        <td><%= paper_letter.paper %></td>
+        <td><%= link_to 'Show', paper_letter %></td>
+        <td><%= link_to 'Edit', edit_paper_letter_path(paper_letter) %></td>
+        <td><%= link_to 'Destroy', paper_letter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Test paper letter', new_paper_letter_path %>

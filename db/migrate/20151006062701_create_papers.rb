@@ -1,6 +1,6 @@
-class CreateTestPapers < ActiveRecord::Migration
+class CreatePapers < ActiveRecord::Migration
   def change
-    create_table :test_papers do |t|
+    create_table :papers do |t|
       t.string :name
       t.integer :order
 

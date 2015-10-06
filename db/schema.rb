@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006075610) do
+ActiveRecord::Schema.define(version: 20151006125401) do
 
   create_table "letters", force: :cascade do |t|
     t.string   "category"
@@ -23,17 +23,17 @@ ActiveRecord::Schema.define(version: 20151006075610) do
   add_index "letters", ["category"], name: "index_letters_on_category"
   add_index "letters", ["name"], name: "index_letters_on_name"
 
-  create_table "test_paper_letters", force: :cascade do |t|
+  create_table "paper_letters", force: :cascade do |t|
     t.integer  "letter_id"
-    t.integer  "test_paper_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "paper_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "test_paper_letters", ["letter_id"], name: "index_test_paper_letters_on_letter_id"
-  add_index "test_paper_letters", ["test_paper_id"], name: "index_test_paper_letters_on_test_paper_id"
+  add_index "paper_letters", ["letter_id"], name: "index_paper_letters_on_letter_id"
+  add_index "paper_letters", ["paper_id"], name: "index_paper_letters_on_paper_id"
 
-  create_table "test_papers", force: :cascade do |t|
+  create_table "papers", force: :cascade do |t|
     t.string   "name"
     t.integer  "order"
     t.datetime "created_at",  null: false
@@ -41,14 +41,28 @@ ActiveRecord::Schema.define(version: 20151006075610) do
     t.text     "description"
   end
 
-  create_table "tests", force: :cascade do |t|
+  create_table "test_items", force: :cascade do |t|
     t.integer  "time"
     t.integer  "letter_id"
     t.boolean  "get"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "test_id"
   end
 
-  add_index "tests", ["letter_id"], name: "index_tests_on_letter_id"
+  add_index "test_items", ["letter_id"], name: "index_test_items_on_letter_id"
+  add_index "test_items", ["test_id"], name: "index_test_items_on_test_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.integer  "paper_id"
+    t.integer  "time"
+    t.integer  "corrent"
+    t.integer  "wrong"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "started",    default: false, null: false
+  end
+
+  add_index "tests", ["paper_id"], name: "index_tests_on_paper_id"
 
 end

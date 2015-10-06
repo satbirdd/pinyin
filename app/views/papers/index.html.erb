@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Test Papers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Order</th>
+      <th colspan='2'>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @papers.each do |paper| %>
+      <tr data-test-paper-id="<%= paper.id %>" class="test-paper">
+        <td><%= paper.name %></td>
+        <td><%= paper.order %></td>
+        <td><%= paper.description %></td>
+        <td><%= button_to "Test", paper_tests_path(paper) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

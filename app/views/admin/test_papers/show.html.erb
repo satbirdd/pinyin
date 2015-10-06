@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
-  <%= @admin_test_paper.name %>
+  <%= @admin_paper.name %>
 </p>
 
 <p>
   <strong>Letters:</strong>
-  <% @admin_test_paper.letters.group_by(&:category).each do |category, letters| %>
+  <% @admin_paper.letters.group_by(&:category).each do |category, letters| %>
     <div>
       <%= category %>
       <div>
@@ -18,5 +18,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_admin_test_paper_path(@admin_test_paper) %> |
-<%= link_to 'Back', admin_test_papers_path %>
+<%= link_to 'Edit', edit_admin_paper_path(@admin_paper) %> |
+<%= link_to 'Back', admin_papers_path %>

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestPaperTest < ActiveSupport::TestCase
+class PaperTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
