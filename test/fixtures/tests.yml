@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 1
+  letter_id: 
+  get: false
+
+two:
+  time: 1
+  letter_id: 
+  get: false

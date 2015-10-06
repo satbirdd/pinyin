@@ -1,0 +1,67 @@
+<%= form_for([:admin, @admin_test_paper]) do |f| %>
+  <% if @admin_test_paper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_test_paper.errors.count, "error") %> prohibited this admin_test_paper from being saved:</h2>
+
+      <ul>
+      <% @admin_test_paper.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :order %><br>
+    <%= f.number_field :order %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+
+  <% @letters.each do |category, letters| %>
+    <div>
+      <%= category %>
+      <label for='select-all-<%= category %>'>all</label><input type='checkbox' class='select-all' id='select-all-<%= category %>' data-category="<%= category %>">
+      <% letters.each_slice(4) do |lters| %>
+        <div>
+          <%= f.collection_check_boxes(:letter_ids, lters, :id, :name) do |b| %>
+            <%= b.label(:"data-value" => b.value, :"data-category" => category, class: "#{category} letter-item") { b.check_box + b.text } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+  $(function () {
+    $(':checkbox.select-all').change(function (e) {
+      var selectStatus = $(this).prop('checked');
+      var category = $(this).attr('data-category');
+
+      $('label.' + category + " :checkbox").prop('checked', selectStatus)
+    });
+
+    $('.letter-item :checkbox').change(function (e) {
+      var selectStatus = $(this).prop('checked');
+      var category = $(this).parent('label').attr('data-category');
+
+      if (selectStatus == false) {
+        $(':checkbox.select-all[data-category=' + category + ']').prop('checked', false);
+      }
+    });
+  });
+</script>

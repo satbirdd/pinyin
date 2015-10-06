@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Test Papers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Order</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_papers.each do |test_paper| %>
+      <tr>
+        <td><%= test_paper.name %></td>
+        <td><%= test_paper.order %></td>
+        <td><%= test_paper.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

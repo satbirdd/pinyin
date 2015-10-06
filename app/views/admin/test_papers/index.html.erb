@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Test Papers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_test_papers.each do |test_paper| %>
+      <tr>
+        <td><%= test_paper.name %></td>
+        <td><%= link_to 'Show', admin_test_paper_path(test_paper) %></td>
+        <td><%= link_to 'Edit', edit_admin_test_paper_path(test_paper) %></td>
+        <td><%= link_to 'Destroy', admin_test_paper_path(test_paper), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Test paper', new_admin_test_paper_path %>
