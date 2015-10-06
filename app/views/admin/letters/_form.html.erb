@@ -1,4 +1,4 @@
-<%= form_for(@admin_letter) do |f| %>
+<%= form_for([:admin, @admin_letter]) do |f| %>
   <% if @admin_letter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@admin_letter.errors.count, "error") %> prohibited this admin_letter from being saved:</h2>
@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :category, "类型" %><br>
+    <%= f.select :category, Letter::CATEGORIES %>
   </div>
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.label :name, "拼音" %><br>
+    <%= f.text_field :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

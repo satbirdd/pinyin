@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006125401) do
+ActiveRecord::Schema.define(version: 20151006122148) do
 
   create_table "letters", force: :cascade do |t|
     t.string   "category"
@@ -42,27 +42,27 @@ ActiveRecord::Schema.define(version: 20151006125401) do
   end
 
   create_table "test_items", force: :cascade do |t|
+    t.integer  "paper_id"
     t.integer  "time"
-    t.integer  "letter_id"
-    t.boolean  "get"
+    t.integer  "corrent"
+    t.integer  "wrong"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "test_id"
   end
 
-  add_index "test_items", ["letter_id"], name: "index_test_items_on_letter_id"
+  add_index "test_items", ["paper_id"], name: "index_test_items_on_paper_id"
   add_index "test_items", ["test_id"], name: "index_test_items_on_test_id"
 
   create_table "tests", force: :cascade do |t|
-    t.integer  "paper_id"
     t.integer  "time"
-    t.integer  "corrent"
-    t.integer  "wrong"
+    t.integer  "letter_id"
+    t.boolean  "get"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "started",    default: false, null: false
   end
 
-  add_index "tests", ["paper_id"], name: "index_tests_on_paper_id"
+  add_index "tests", ["letter_id"], name: "index_tests_on_letter_id"
 
 end

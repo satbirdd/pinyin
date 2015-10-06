@@ -30,7 +30,7 @@ class Admin::LettersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to amdin_letters_path, notice: 'Letter was successfully created.' }
+      format.html { redirect_to admin_letters_path, notice: 'Letter was successfully created.' }
       format.json { render :show, status: :created }
     end
   end
@@ -39,7 +39,7 @@ class Admin::LettersController < ApplicationController
   # PATCH/PUT /admin/letters/1.json
   def update
     respond_to do |format|
-      if @admin_letter.update(admin_letter_params)
+      if @admin_letter.update(letter_params)
         format.html { redirect_to @admin_letter, notice: 'Letter was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_letter }
       else
@@ -66,7 +66,7 @@ class Admin::LettersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_letter_params
+    def letter_params
       params.require(:letter).permit(:name, :category)
     end
 end
