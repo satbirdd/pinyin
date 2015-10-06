@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006122148) do
+ActiveRecord::Schema.define(version: 20151006132129) do
 
   create_table "letters", force: :cascade do |t|
     t.string   "category"
@@ -61,8 +61,10 @@ ActiveRecord::Schema.define(version: 20151006122148) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "started",    default: false, null: false
+    t.integer  "paper_id"
   end
 
   add_index "tests", ["letter_id"], name: "index_tests_on_letter_id"
+  add_index "tests", ["paper_id"], name: "index_tests_on_paper_id"
 
 end
