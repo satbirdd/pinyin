@@ -8,7 +8,7 @@ class Test < ActiveRecord::Base
   end
 
   def correct_rate
-    if correct + wrong > 0
+    if !correct.nil? && !wrong.nil? && correct + wrong > 0
       "#{((correct.to_f / (correct + wrong)) * 100).round(0)}%"
     else
       "测试未完成"
