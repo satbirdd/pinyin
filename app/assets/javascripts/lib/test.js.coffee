@@ -84,10 +84,14 @@ class @Test
   testLetter: (letter) ->
     @render(letter)
 
+  randomColor: () ->
+    colors = ['#c7254e', '#aa6708', '#4f9fcf', '#337ab7', '#3c763d', '#31708f', '#8a6d3b']
+    colors[Math.floor(Math.random() * colors.length)]
+
   render: (letter) ->
     html = """
       <div>
-        <div class="letter-read letter">
+        <div class="letter-read letter" style="color: #{@randomColor()}">
           #{letter.name}
         </div>
         <div class="oprations">
