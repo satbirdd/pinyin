@@ -20,13 +20,11 @@ class @Test
         letter_id: letterId
     })
 
-    xhr.done(() =>
-      @next()
-    )
-
     xhr.fail(() =>
       alert("网络错误, 请稍候重试")
     )
+
+    @next()
 
   readWrong: (e) ->
     letterId = $(e.target).attr('data-letter-id')
@@ -35,13 +33,11 @@ class @Test
         letter_id: letterId
     })
 
-    xhr.done(() =>
-      @next()
-    )
-
     xhr.fail(() =>
       alert("网络错误, 请稍候重试")
     )
+
+    @next()
 
   next: () ->
     if @letters.length > @index + 1
