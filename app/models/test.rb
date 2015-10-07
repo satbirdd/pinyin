@@ -3,7 +3,9 @@ class Test < ActiveRecord::Base
 
   has_many :items, class_name: 'TestItem'
 
-  delegate :letters, to: :paper
+  def letters
+    paper.letters.sample(paper.letters.length)
+  end
 
   def correct_rate
     if correct + wrong > 0
