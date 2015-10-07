@@ -2,11 +2,12 @@
 
 <h1>测试一览</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>正确数</th>
       <th>错误数</th>
+      <th>正确率</th>
       <th>测试时间</th>
     </tr>
   </thead>
@@ -16,7 +17,8 @@
       <tr>
         <td><%= test.correct %></td>
         <td><%= test.wrong %></td>
-        <td><%= test.time ? test.time/1000 : '-' %> Sec</td>
+        <td><%= test.correct_rate %>
+        <td><%= test.time ? "#{test.time/1000/60.round(0)}分#{test.time/1000%60}秒" : '-' %> </td>
       </tr>
     <% end %>
   </tbody>

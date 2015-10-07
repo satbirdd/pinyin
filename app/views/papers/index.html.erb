@@ -18,8 +18,12 @@
         <td><%= paper.name %></td>
         <td><%= paper.order %></td>
         <td><%= paper.description %></td>
-        <td>tested <%= paper.tests.count %> Times<%= link_to "查看详细", paper_tests_path(paper) %> </td>
-        <td><%= button_to "Test", paper_tests_path(paper) %></td>
+        <td>
+          <%= link_to paper_tests_path(paper) do %>
+            已测试<%= paper.tests.count %>次
+          <% end %>
+        </td>
+        <td><%= button_to "测试", paper_tests_path(paper), class: 'btn btn-default' %></td>
       </tr>
     <% end %>
   </tbody>
