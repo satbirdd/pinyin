@@ -3,4 +3,7 @@ class Letter < ActiveRecord::Base
 
   has_many :paper_letters
   has_many :papers, through: :paper_letters
+
+  validates :name, uniqueness: true
+  validates :category, presence: true, inclusion: { in: CATEGORIES }
 end

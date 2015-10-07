@@ -5,14 +5,18 @@
 <table>
   <thead>
     <tr>
-      <th></th>
+      <th>correct</th>
+      <th>wrong</th>
+      <th>time</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tests.each do |test| %>
       <tr>
-        <td><%= link_to 'Show', paper_test_path(@paper, test) %></td>
+        <td><%= test.correct %></td>
+        <td><%= test.wrong %></td>
+        <td><%= test.time ? test.time/1000 : '-' %> Sec</td>
       </tr>
     <% end %>
   </tbody>

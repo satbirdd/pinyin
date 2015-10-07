@@ -15,3 +15,9 @@ letters = {
   "整体认读" => %w(zhī zhí zhǐ zhì chī chí chǐ chì shī shí shǐ shì rī rí rǐ rì zī zí zǐ zì cī cí cǐ cì sī sí sǐ sì yī yí yǐ yì wū wú wǔ wù yū yú yǔ yù yē yé yě yè yuē yué yuě yuè yuān yuán yuǎn yuàn yīn yín yǐn yìn yūn yún yǔn yùn yīng yíng yǐng yìng),
   "声母" => %w(b p m f d t n l g k h j q x zh ch sh r z c s y w)
 }
+
+letters.each do |category, ltters|
+  ltters.each do |letter|
+    Letter.create(category: category, name: letter)
+  end
+end

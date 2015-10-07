@@ -14,10 +14,34 @@ class @Test
     @element.on 'click', '.read-wrong', @readWrong.bind(@)
 
   readCorrect: (e) ->
-    @next()
+    letterId = $(e.target).attr('data-letter-id')
+
+    xhr = $.post("#{@urlRoot}/read_correct", {
+        letter_id: letterId
+    })
+
+    xhr.done(() =>
+      @next()
+    )
+
+    xhr.fail(() =>
+      alert("网络错误, 请稍候重试")
+    )
 
   readWrong: (e) ->
-    @next()
+    letterId = $(e.target).attr('data-letter-id')
+
+    xhr = $.post("#{@urlRoot}/read_wrong", {
+        letter_id: letterId
+    })
+
+    xhr.done(() =>
+      @next()
+    )
+
+    xhr.fail(() =>
+      alert("网络错误, 请稍候重试")
+    )
 
   next: () ->
     if @letters.length > @index + 1
@@ -28,15 +52,32 @@ class @Test
       @finish()
 
   finish: () ->
-    html = """
-      <div>Finish!</div>
-    """
-    @element.html(html)
+    @timeEnd = new Date().getTime()
+    time = @timeEnd - @timeBegin
+
+    xhr = $.post("#{@urlRoot}/finish", {
+      time: time
+    })
+
+    xhr.done (data, status, response) =>
+      correct = data.correct
+      wrong = data.wrong
+      time = time
+
+      html = """
+        <div>Finish!</div>
+        <div>Correct: #{correct}!</div>
+        <div>wrong: #{wrong}!</div>
+        <div>Spend: #{(time/1000/60).toFixed(0)} Min #{(time/1000%60).toFixed(0)} Sec!</div>
+      """
+
+      @element.html(html)
 
   bindBeginButton: () ->
     @triggerButton.click @begin.bind(@)
 
   begin: (e) ->
+    @timeBegin = new Date().getTime()
     letter = @letters[@index]
     @testLetter(letter)
 
@@ -50,10 +91,10 @@ class @Test
           #{letter.name}
         </div>
         <div class="oprations">
-          <a href="javascript: void(0);" data-url="#{@urlRoot}" data-letter-id="#{letter.id}" class="btn btn-default read-correct">
+          <a href="javascript: void(0);" data-letter-id="#{letter.id}" class="btn btn-default read-correct">
             正确
           </a>
-          <a href="javascript: void(0);" data-url="#{@urlRoot}" data-letter-id="#{letter.id}" class="btn btn-default read-wrong">
+          <a href="javascript: void(0);" data-letter-id="#{letter.id}" class="btn btn-default read-wrong">
             错误
           </a>
         </div>
