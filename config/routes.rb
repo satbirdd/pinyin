@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "papers#index"
+  devise_for :users
 
   resources :letters, only: [:index, :show]
   resources :paper_letters, only: [:index, :show]

@@ -8,6 +8,11 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
+gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
+gem 'devise-i18n-views'
+
+gem 'pg'
+
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
