@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Admin Letters</h1>
+<h1>拼音一览表</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Category</th>
+      <th>拼音</th>
+      <th>类型</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= letter.name %></td>
         <td><%= letter.category %></td>
-        <td><%= link_to 'Show', letter %></td>
-        <td><%= link_to 'Edit', edit_admin_letter_path(letter) %></td>
-        <td><%= link_to 'Destroy', admin_letter_path(letter), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '详细', letter %></td>
+        <td><%= link_to '编辑', edit_admin_letter_path(letter) %></td>
+        <td><%= link_to '删除', admin_letter_path(letter), method: :delete, data: { confirm: '确定删除么' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Letter', new_admin_letter_path %>
+<%= link_to '添加新的拼音', new_admin_letter_path %>

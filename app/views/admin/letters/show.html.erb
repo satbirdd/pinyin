@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>拼音:</strong>
   <%= @admin_letter.name %>
 </p>
 
 <p>
-  <strong>Category:</strong>
+  <strong>类型:</strong>
   <%= @admin_letter.category %>
 </p>
 
-<%= link_to 'Edit', edit_admin_letter_path(@admin_letter) %> |
-<%= link_to 'Back', admin_letters_path %>
+<%= link_to '编辑', edit_admin_letter_path(@admin_letter) %> |
+<%= link_to '返回', admin_letters_path %>

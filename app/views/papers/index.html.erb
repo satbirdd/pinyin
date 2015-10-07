@@ -5,9 +5,9 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Order</th>
-      <th>Description</th>
+      <th>拼音</th>
+      <th>顺序</th>
+      <th>描述</th>
       <th colspan='2'></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= paper.name %></td>
         <td><%= paper.order %></td>
         <td><%= paper.description %></td>
-        <td>tested <%= paper.tests.count %> Times<%= link_to "detail", paper_tests_path(paper) %> </td>
+        <td>tested <%= paper.tests.count %> Times<%= link_to "查看详细", paper_tests_path(paper) %> </td>
         <td><%= button_to "Test", paper_tests_path(paper) %></td>
       </tr>
     <% end %>

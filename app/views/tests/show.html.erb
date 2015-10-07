@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名称:</strong>
   <%= @test.paper.name %>
 </p>
 
 <div class='test-area'>
-  <button class='btn btn-primary btn-lg begin-test'>Begin</button>
+  <button class='btn btn-primary btn-lg begin-test'>开始测试</button>
 </div>
 
-<%= link_to 'Back', paper_path(@paper) %>
+<%= link_to '返回', paper_path(@paper) %>
 
 <script type="text/javascript">
   var test = new Test({

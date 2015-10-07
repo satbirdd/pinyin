@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Admin Test Papers</h1>
+<h1>试卷一览表</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th colspan="3"></th>
@@ -13,9 +13,9 @@
     <% @admin_papers.each do |paper| %>
       <tr>
         <td><%= paper.name %></td>
-        <td><%= link_to 'Show', admin_paper_path(paper) %></td>
-        <td><%= link_to 'Edit', edit_admin_paper_path(paper) %></td>
-        <td><%= link_to 'Destroy', admin_paper_path(paper), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '详细', admin_paper_path(paper) %></td>
+        <td><%= link_to '编辑', edit_admin_paper_path(paper) %></td>
+        <td><%= link_to '删除', admin_paper_path(paper), method: :delete, data: { confirm: '确定删除么？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Test paper', new_admin_paper_path %>
+<%= link_to '添加一张试卷', new_admin_paper_path %>

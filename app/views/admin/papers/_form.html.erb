@@ -12,24 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, "名称" %><br>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :order %><br>
+    <%= f.label :order, "顺序" %><br>
     <%= f.number_field :order %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description, "描述" %><br>
     <%= f.text_field :description %>
   </div>
 
   <% @letters.each do |category, letters| %>
     <div>
       <%= category %>
-      <label for='select-all-<%= category %>'>all</label><input type='checkbox' class='select-all' id='select-all-<%= category %>' data-category="<%= category %>">
+      <label for='select-all-<%= category %>'>全选</label>
+      <input type='checkbox' class='select-all' id='select-all-<%= category %>' data-category="<%= category %>">
       <% letters.each_slice(4) do |lters| %>
         <div>
           <%= f.collection_check_boxes(:letter_ids, lters, :id, :name) do |b| %>
@@ -41,7 +42,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit, "确定" %>
   </div>
 <% end %>
 
